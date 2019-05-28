@@ -91,7 +91,7 @@ WantedBy=multi-user.target
 _______________________________________________________
 
 Integration with NGINX
-sudo nano /etc/nginx/sites-available/myproject1
+sudo nano /etc/nginx/sites-available/myproject
 server {
     listen 80;
     server_name 192.168.2.200;
