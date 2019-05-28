@@ -39,7 +39,6 @@ python myproject.py
 Run:  http://192.168.2.200:8000/
 
 Hello There!
-
 ________________________________________________________
 
 Create the WSGI Entry Point ( Web server gateway Interface)
@@ -68,9 +67,9 @@ Hello There!
 We're now done with our virtual environment, so we can deactivate it:
 deactivate
 
-
 ______________________________________________________
 Create a systemd Unit File
+
 The next piece we need to take care of is the systemd service
  unit file. Creating a systemd unit file will allow Ubuntu's 
 init system to automatically start Gunicorn and serve our 
@@ -88,17 +87,7 @@ ExecStart=/home/rac/myproject/myprojectenv/bin/gunicorn --bind 0.0.0.0:8000 -w 4
 Restart=always
 [Install]
 WantedBy=multi-user.target
-Not working
-[Unit]
-Description=Gunicorn instance to serve myproject
-After=network.target
-[Service]
-User=rac
-WorkingDirectory=/home/rac/myproject
-ExecStart=/home/rac/myproject/myprojectenv/bin/gunicorn --bind unix:myproject.sock -w 4 wsgi:app
-Restart=always
-[Install]
-WantedBy=multi-user.target
+
 _______________________________________________________
 
 Integration with NGINX
