@@ -68,7 +68,8 @@ We're now done with our virtual environment, so we can deactivate it:
 deactivate
 
 ______________________________________________________
-Create a systemd Unit File
+For Ubuntu:
+Create a systemd Unit File  
 
 The next piece we need to take care of is the systemd service
  unit file. Creating a systemd unit file will allow Ubuntu's 
@@ -87,6 +88,37 @@ ExecStart=/home/rac/myproject/myprojectenv/bin/gunicorn --bind 0.0.0.0:8000 -w 4
 Restart=always
 [Install]
 WantedBy=multi-user.target
+_______________________________________________________________________________
+For Centos6:
+We are creating mypandemo service.
+
+Path :
+
+/etc/rc.d/init.d/mypandemo
+---------------------------------------------------------------
+
+#!/bin/bash
+#/etc/rc.d/init.d/mypandemo
+
+# Source function library.
+. /etc/init.d/functions
+
+
+
+start() {
+    echo -n "Starting mypandemo: "
+     
+        #!/bin/bash
+
+    cd /root/Python_AI/myproject
+    #/root/Python_AI/Bajaj_Insurance_Demo/myproject/myprojectenv/bin/gunicorn --bind 0.0.0.0:5000 -w 4 wsgi
+    /opt/rh/python27/root/usr/bin/gunicorn --daemon --timeout 120 --bind 0.0.0.0:8000 -w 2 wsgi
+
+   
+    return 0
+}   
+
+start
 
 _______________________________________________________
 
@@ -100,7 +132,7 @@ server {
         proxy_pass http://192.168.2.200:8000;
     }
 }
-sudo ln -s /etc/nginx/sites-available/myproject1 /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled
 sudo nginx -t
 sudo service nginx restart
 http://192.168.2.200
