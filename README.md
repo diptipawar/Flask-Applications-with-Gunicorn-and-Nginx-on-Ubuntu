@@ -1,6 +1,7 @@
 # Flask-Applications-with-Gunicorn-and-Nginx-on-Ubuntu
 
-Three tier Architecture [Flask + Gunicorn + Nginx]\\
+Three tier Architecture [Flask + Gunicorn + Nginx]
+
 Two tier Architecture [Flask + Gunicorn]
 
 Web Server - Nginx
